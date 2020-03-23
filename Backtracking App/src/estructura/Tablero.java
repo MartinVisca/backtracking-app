@@ -9,8 +9,6 @@ public class Tablero extends Estructura {
     private Object valorPorDefecto;
     private int filas;
     private int columnas;
-    private int cantidadElementos;
-    private Impresor impresor;
 
     public Tablero(){}
 
@@ -81,11 +79,6 @@ public class Tablero extends Estructura {
             this.estructura[posicion[0]][posicion[1]] = this.valorPorDefecto;
             this.cantidadElementos--;
         }
-    }
-
-    @Override
-    public int getCantidadElementos() {
-        return cantidadElementos;
     }
 
     @Override
