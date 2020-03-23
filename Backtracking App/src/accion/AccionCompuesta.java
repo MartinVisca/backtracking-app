@@ -9,7 +9,7 @@ public class AccionCompuesta implements Accion {
     private Accion a1;
     private Accion a2;
 
-    public AccionCompuesta(){};
+    public AccionCompuesta(){}
 
     public AccionCompuesta(Accion a1, Accion a2){
         this.a1 = a1;
