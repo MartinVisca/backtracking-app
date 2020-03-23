@@ -1,7 +1,24 @@
 package estructura;
 
+import impresor.Impresor;
+
 public abstract class Estructura {
     /**Clase abstracta que representa la estructura sobre la que se hará el seguimiento del backtracking. **/
+
+    protected int cantidadElementos;
+    protected Impresor impresor;
+
+    public int getCantidadElementos(){
+        return this.cantidadElementos;
+    }
+
+    public Impresor getImpresor() {
+        return impresor;
+    }
+
+    public void setImpresor(Impresor impresor) {
+        this.impresor = impresor;
+    }
 
     public abstract Object getEstructura();
 
@@ -10,8 +27,6 @@ public abstract class Estructura {
     public abstract void borrarElemento(int ... posicion);
 
     protected abstract void inicializar();
-
-    public abstract int getCantidadElementos();
 
     public abstract void imprimirEstructura();
 
