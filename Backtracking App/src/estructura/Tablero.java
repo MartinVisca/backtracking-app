@@ -85,13 +85,4 @@ public class Tablero extends Estructura {
     public Object getElemento(int... posicion) {
         return this.estructura[posicion[0]][posicion[1]];
     }
-
-    @Override
-    public void imprimirEstructura() {
-        try {
-            this.impresor.imprimir((Estructura)this.clone());
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-    }
 }

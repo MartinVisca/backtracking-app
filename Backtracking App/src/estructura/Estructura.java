@@ -20,6 +20,14 @@ public abstract class Estructura {
         this.impresor = impresor;
     }
 
+    public void imprimirEstructura(){
+        try {
+            this.impresor.imprimir((Estructura) this.clone());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public abstract Object getEstructura();
 
     public abstract void agregarElemento(Object elemento, int ... posicion);
@@ -27,8 +35,6 @@ public abstract class Estructura {
     public abstract void borrarElemento(int ... posicion);
 
     protected abstract void inicializar();
-
-    public abstract void imprimirEstructura();
 
     public abstract boolean hayElemento(int ... posicion);
 
