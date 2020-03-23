@@ -1,5 +1,7 @@
 package estructura;
 
+import impresor.Impresor;
+
 public class Tablero extends Estructura {
     /**Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez. **/
 
@@ -8,16 +10,18 @@ public class Tablero extends Estructura {
     private int filas;
     private int columnas;
     private int cantidadElementos;
+    private Impresor impresor;
 
     public Tablero(){}
 
-    public Tablero(Object valorPorDefecto, int filas, int columnas){
+    public Tablero(Object valorPorDefecto, int filas, int columnas, Impresor impresor){
         this.estructura = new Object[filas][columnas];
         this.filas = filas;
         this.columnas = columnas;
         this.valorPorDefecto = valorPorDefecto;
         this.cantidadElementos = 0;
         this.inicializar();
+        this.impresor = impresor;
     }
 
     @Override
@@ -91,10 +95,10 @@ public class Tablero extends Estructura {
 
     @Override
     public void imprimirEstructura() {
-        for (int i = 0; i < this.filas; i++) {
-            for (int j = 0; j < this.columnas; j++)
-                System.out.print(this.getElemento(i, j) + " ");
-            System.out.println();
+        try {
+            this.impresor.imprimir((Estructura)this.clone());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
     }
 }
