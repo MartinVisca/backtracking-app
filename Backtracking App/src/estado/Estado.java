@@ -6,7 +6,10 @@ import estructura.Estructura;
 import java.util.Vector;
 
 public abstract class Estado {
-    /**Estado es la clase que representa cada nodo del árbol con el que se puede ver el recorrido de un algoritmo de backtracking.**/
+     /**
+     *   Esta clase representa la configuración de la estructura sobre la que se está trabajando en un momento dado de la
+     *   ejecución.
+     **/
 
     private Estructura estructura;
 

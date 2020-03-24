@@ -7,7 +7,9 @@ import estado.Estado;
 import java.util.Vector;
 
 public abstract class Ejecutor {
-    /**Clase encargada de llevar a cabo la ejecucion del backtracking.**/
+     /**
+     * Clase encargada de configurar y ejecutar el algoritmo de backtracking.
+     **/
 
     private Condicion hoja;
     private Condicion poda;

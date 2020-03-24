@@ -3,7 +3,9 @@ package estructura;
 import impresor.Impresor;
 
 public abstract class Estructura {
-    /**Clase abstracta que representa la estructura sobre la que se hará el seguimiento del backtracking. **/
+     /**
+     * Representante del contenedor sobre el que se realizará el backtracking.
+     **/
 
     protected int cantidadElementos;
     protected Impresor impresor;

@@ -3,8 +3,10 @@ package accion;
 import estructura.Estructura;
 
 public class AccionCompuesta implements Accion {
-    /**Una de las posibles implementaciones de Accion. Esta clase da la utilidad de poder realizar mas de una posible accion con una
-     * unica variable. **/
+     /**
+     *  Una de las posibles implementaciones de Accion. Esta clase da la utilidad de poder realizar más de una posible acción con una
+     *  única variable.
+     **/
 
     private Accion a1;
     private Accion a2;

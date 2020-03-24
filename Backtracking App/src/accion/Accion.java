@@ -3,7 +3,9 @@ package accion;
 import estructura.Estructura;
 
 public interface Accion {
-    /**Interfaz encargada de realizar una determinada accioón sobre la estructura en cuestión. **/
+     /**
+     * Encargada de realizar una determinada acción sobre la estructura en el momento en que es llamada.
+     **/
 
     public void realizarAccion(Estructura e, Object ... parametros);
 }

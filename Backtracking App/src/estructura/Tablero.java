@@ -3,7 +3,9 @@ package estructura;
 import impresor.Impresor;
 
 public class Tablero extends Estructura {
-    /**Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez. **/
+     /**
+     * Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez.
+     **/
 
     private Object[][] estructura;
     private Object valorPorDefecto;
