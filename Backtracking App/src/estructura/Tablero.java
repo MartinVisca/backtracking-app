@@ -53,6 +53,30 @@ public class Tablero extends Estructura {
         this.valorPorDefecto = valorPorDefecto;
     }
 
+    public boolean hayElementoEnRecta(int fila, int columna){
+        for (int i = 0; i < this.filas; i++){
+            for (int j = 0; j < this.columnas; j++){
+                if (this.hayElemento(i, j))
+                    if ((fila == i || columna == j) && (fila != i || columna != j))
+                        return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean hayElementoEnDiagonal(int fila, int columna){
+        for (int i = 0; i < this.filas; i++){
+            for (int j = 0; j < this.columnas; j++){
+                if (this.hayElemento(i, j))
+                    if ((fila != i && columna != j) && Math.abs(fila - i) == Math.abs(columna - j))
+                        return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     protected void inicializar() {
         for (int i = 0; i < this.filas; i++)
