@@ -6,15 +6,15 @@ import estado.Estado;
 
 import java.util.Vector;
 
-public abstract class Ejecutor {
+public class Ejecutor {
      /**
      * Clase encargada de configurar y ejecutar el algoritmo de backtracking.
      **/
 
-    private Condicion hoja;
-    private Condicion poda;
-    private Estado solucion;
-    private Accion accion;
+    protected Condicion hoja;
+    protected Condicion poda;
+    protected Estado solucion;
+    protected Accion accion;
 
     public void setHoja(Condicion hoja) {
         this.hoja = hoja;
@@ -49,7 +49,8 @@ public abstract class Ejecutor {
     }
 
     public void backtrackingEsquemaGeneral(Estado e, Estado solucion){
-        //Método que realiza el backtracking en su forma más simple.
+        //Método que realiza el backtracking en su forma general.
+
         if (!this.hoja.cumpleCondicion(e))
             this.accion.realizarAccion(e.getEstructura());
         else{
@@ -67,8 +68,10 @@ public abstract class Ejecutor {
         }
     }
 
-    public abstract void backtrackingPersonalizado(Estado e, Object ... parametros);
-    //Método que da la posibilidad de definir un propio backtracking con las herramientas brindadas.
-
-    public abstract Estado calcularSolucion();
+    public void backtrackingPersonalizado(Estado e, Object ... parametros) {
+        /*
+        *   Método que da la posibilidad de definir un propio backtracking con las herramientas brindadas.
+        *   Está vacío porque la intención es que el que use esta librería defina su propio código.
+        */
+    }
 }
