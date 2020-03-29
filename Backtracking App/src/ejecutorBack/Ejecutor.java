@@ -12,9 +12,14 @@ public class Ejecutor {
      **/
 
     protected Condicion hoja;
-    protected Condicion poda;
+    protected Vector<Condicion> podas;
     protected Estado solucion;
-    protected Accion accion;
+    protected Vector<Accion> acciones;
+
+    public Ejecutor(){
+        this.podas = new Vector<>();
+        this.acciones = new Vector<>();
+    }
 
     public void setHoja(Condicion hoja) {
         this.hoja = hoja;
@@ -24,12 +29,12 @@ public class Ejecutor {
         return hoja;
     }
 
-    public void setPoda(Condicion poda) {
-        this.poda = poda;
+    public void addPoda(Condicion poda) {
+        this.podas.add(poda);
     }
 
-    public Condicion getPoda() {
-        return poda;
+    public Condicion getPoda(int posicion) {
+        return this.podas.get(posicion);
     }
 
     public void setSolucion(Estado solucion) {
@@ -40,19 +45,19 @@ public class Ejecutor {
         return solucion;
     }
 
-    public Accion getAccion() {
-        return accion;
+    public Accion getAccion(int posicion) {
+        return this.acciones.get(posicion);
     }
 
-    public void setAccion(Accion accion) {
-        this.accion = accion;
+    public void addAccion(Accion accion) {
+        this.acciones.add(accion);
     }
 
     public void backtrackingEsquemaGeneral(Estado e, Estado solucion){
         //Método que realiza el backtracking en su forma general.
 
         if (!this.hoja.cumpleCondicion(e))
-            this.accion.realizarAccion(e.getEstructura());
+            this.acciones.firstElement().realizarAccion(e.getEstructura());
         else{
             int nroHijo = 0;
             Vector <Estado> auxiliar = e.getEstadosSiguientes();
@@ -61,7 +66,7 @@ public class Ejecutor {
                 Estado siguiente = auxiliar.firstElement();
                 auxiliar.removeElementAt(0);
 
-                if (!poda.cumpleCondicion(e))
+                if (!podas.firstElement().cumpleCondicion(e))
                     this.backtrackingEsquemaGeneral(siguiente, solucion);
                 nroHijo++;
             }
