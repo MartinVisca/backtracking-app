@@ -2,16 +2,23 @@ package estado;
 
 import condicion.Condicion;
 import estructura.Estructura;
+import impresor.Impresor;
 
 import java.util.Vector;
 
-public abstract class Estado {
+public class Estado {
      /**
      *   Esta clase representa la configuración de la estructura sobre la que se está trabajando en un momento dado de la
      *   ejecución.
      **/
 
     private Estructura estructura;
+
+    public Estado(){}
+
+    public Estado(Estructura estructura){
+        this.estructura = estructura;
+    }
 
     public Estructura getEstructura() {
         return estructura;
@@ -21,11 +28,19 @@ public abstract class Estado {
         this.estructura = estructura;
     }
 
-    public abstract boolean esHoja(Condicion condicion);
+    public boolean esHoja(Condicion condicion){
+        return condicion.cumpleCondicion(this);
+    }
 
-    public abstract void imprimirEstado();
+    public void imprimirEstado(){
+        this.estructura.imprimirEstructura();
+    }
 
-    public abstract Vector<Estado> getEstadosSiguientes();
+    public Vector<Estado> getEstadosSiguientes(){
+        return null;
+    }
 
-    public abstract boolean cumpleCondicion(Condicion condicion);
+    public boolean cumpleCondicion(Condicion condicion){
+        return condicion.cumpleCondicion(this);
+    }
 }
