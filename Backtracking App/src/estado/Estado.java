@@ -6,7 +6,7 @@ import impresor.Impresor;
 
 import java.util.Vector;
 
-public class Estado {
+public abstract class Estado {
      /**
      *   Esta clase representa la configuración de la estructura sobre la que se está trabajando en un momento dado de la
      *   ejecución.
@@ -36,9 +36,7 @@ public class Estado {
         this.estructura.imprimirEstructura();
     }
 
-    public Vector<Estado> getEstadosSiguientes(){
-        return null;
-    }
+    public abstract Vector<Estado> getEstadosSiguientes();
 
     public boolean cumpleCondicion(Condicion condicion){
         return condicion.cumpleCondicion(this);
