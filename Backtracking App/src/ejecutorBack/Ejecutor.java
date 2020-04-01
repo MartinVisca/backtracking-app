@@ -53,30 +53,27 @@ public class Ejecutor {
         this.acciones.add(accion);
     }
 
-    public void backtrackingEsquemaGeneral(Estado e, Estado solucion){
+    public void backtracking(Estado e, Object ... parametros){
         //Método que realiza el backtracking en su forma general.
 
-        if (!this.hoja.cumpleCondicion(e))
-            this.acciones.firstElement().realizarAccion(e.getEstructura());
+        /**
+         * El siguiente es un template de como debería estar planteado el algoritmo en su forma más general.
+         *
+
+        if (!(el estado es hoja)
+            realizar accion;
         else{
             int nroHijo = 0;
-            Vector <Estado> auxiliar = e.getEstadosSiguientes();
 
-            while (!auxiliar.isEmpty()){ //
-                Estado siguiente = auxiliar.firstElement();
-                auxiliar.removeElementAt(0);
+            while (hay estados siguientes){ //
+                siguiente = generar estado siguiente;
 
-                if (!podas.firstElement().cumpleCondicion(e))
-                    this.backtrackingEsquemaGeneral(siguiente, solucion);
+                if (!(se cumple la poda))
+                    backtracking(siguiente, solucion);
                 nroHijo++;
             }
         }
-    }
 
-    public void backtrackingPersonalizado(Estado e, Object ... parametros) {
-        /*
-        *   Método que da la posibilidad de definir un propio backtracking con las herramientas brindadas.
-        *   Está vacío porque la intención es que el que use esta librería defina su propio código.
-        */
+         **/
     }
 }
