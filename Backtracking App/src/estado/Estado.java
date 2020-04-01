@@ -2,9 +2,6 @@ package estado;
 
 import condicion.Condicion;
 import estructura.Estructura;
-import impresor.Impresor;
-
-import java.util.Vector;
 
 public abstract class Estado {
      /**
@@ -35,8 +32,6 @@ public abstract class Estado {
     public void imprimirEstado(){
         this.estructura.imprimirEstructura();
     }
-
-    public abstract Vector<Estado> getEstadosSiguientes();
 
     public boolean cumpleCondicion(Condicion condicion){
         return condicion.cumpleCondicion(this);
