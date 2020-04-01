@@ -13,7 +13,6 @@ public class Ejecutor {
 
     protected Condicion hoja;
     protected Vector<Condicion> podas;
-    protected Estado solucion;
     protected Vector<Accion> acciones;
 
     public Ejecutor(){
@@ -35,14 +34,6 @@ public class Ejecutor {
 
     public Condicion getPoda(int posicion) {
         return this.podas.get(posicion);
-    }
-
-    public void setSolucion(Estado solucion) {
-        this.solucion = solucion;
-    }
-
-    public Estado getSolucion() {
-        return solucion;
     }
 
     public Accion getAccion(int posicion) {

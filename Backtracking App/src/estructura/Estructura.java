@@ -23,11 +23,7 @@ public abstract class Estructura {
     }
 
     public void imprimirEstructura(){
-        try {
-            this.impresor.imprimir((Estructura) this.clone());
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        this.impresor.imprimir(this);
     }
 
     public abstract Object getEstructura();

@@ -3,7 +3,7 @@ package estado;
 import condicion.Condicion;
 import estructura.Estructura;
 
-public abstract class Estado {
+public class Estado {
      /**
      *   Esta clase representa la configuración de la estructura sobre la que se está trabajando en un momento dado de la
      *   ejecución.
