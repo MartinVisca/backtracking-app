@@ -4,7 +4,7 @@ import impresor.Impresor;
 
 public abstract class Estructura {
      /**
-     * Representante del contenedor sobre el que se realizará el backtracking.
+     *  Representante del contenedor sobre el que se realizará el backtracking.
      **/
 
     protected int cantidadElementos;

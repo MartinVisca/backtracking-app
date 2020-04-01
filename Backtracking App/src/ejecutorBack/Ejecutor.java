@@ -8,7 +8,7 @@ import java.util.Vector;
 
 public class Ejecutor {
      /**
-     * Clase encargada de configurar y ejecutar el algoritmo de backtracking.
+     *  Clase encargada de configurar y ejecutar el algoritmo de backtracking.
      **/
 
     protected Condicion hoja;

@@ -4,7 +4,7 @@ import impresor.Impresor;
 
 public class Conjunto extends Estructura {
      /**
-     * Estructura predefinida que modela o representa conjuntos de objetos.
+     *  Estructura predefinida que modela o representa conjuntos de objetos.
      **/
     
     private Object[] estructura;
