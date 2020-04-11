@@ -3,9 +3,12 @@ package estructura;
 import impresor.Impresor;
 
 public class Tablero extends Estructura {
-     /**
+    /**
      *  Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez.
      **/
+
+    private final static int PRIMER_ELEMENTO = 0;
+    private final static int SEGUNDO_ELEMENTO = 1;
 
     private Object[][] estructura;
     private Object valorPorDefecto;
@@ -105,28 +108,28 @@ public class Tablero extends Estructura {
 
     @Override
     public boolean hayElemento(int... posicion) {
-        if (this.estructura[posicion[0]][posicion[1]] == this.valorPorDefecto)
+        if (this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] == this.valorPorDefecto)
             return false;
         return true;
     }
 
     @Override
     public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[0], posicion[1]))
-            this.estructura[posicion[0]][posicion[1]] = elemento;
+        if (!this.hayElemento(posicion[this.PRIMER_ELEMENTO], posicion[this.SEGUNDO_ELEMENTO]))
+            this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] = elemento;
         else
             System.out.println("Ya hay un elemento en la posición indicada.");
     }
 
     @Override
     public void borrarElemento(int... posicion) {
-        if (this.hayElemento(posicion[0], posicion[1])) {
-            this.estructura[posicion[0]][posicion[1]] = this.valorPorDefecto;
+        if (this.hayElemento(posicion[this.PRIMER_ELEMENTO], posicion[this.SEGUNDO_ELEMENTO])) {
+            this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] = this.valorPorDefecto;
         }
     }
 
     @Override
     public Object getElemento(int... posicion) {
-        return this.estructura[posicion[0]][posicion[1]];
+        return this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]];
     }
 }
