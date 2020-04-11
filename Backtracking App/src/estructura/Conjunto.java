@@ -3,10 +3,12 @@ package estructura;
 import impresor.Impresor;
 
 public class Conjunto extends Estructura {
-     /**
+    /**
      *  Estructura predefinida que modela o representa conjuntos de objetos.
      **/
-    
+
+    private final static int PRIMER_ELEMENTO = 0;
+
     private Object[] estructura;
     private Object valorPorDefecto;
     private int tamano;
@@ -51,16 +53,16 @@ public class Conjunto extends Estructura {
 
     @Override
     public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[0]))
-            this.estructura[posicion[0]] = elemento;
+        if (!this.hayElemento(posicion[this.PRIMER_ELEMENTO]))
+            this.estructura[posicion[this.PRIMER_ELEMENTO]] = elemento;
         else
             System.out.println("Ya existe un elemento en la posición indicada.");
     }
 
     @Override
     public void borrarElemento(int... posicion) {
-        if (hayElemento(posicion[0]))
-            this.estructura[posicion[0]] = this.valorPorDefecto;
+        if (hayElemento(posicion[this.PRIMER_ELEMENTO]))
+            this.estructura[posicion[this.PRIMER_ELEMENTO]] = this.valorPorDefecto;
     }
 
     @Override
@@ -71,16 +73,23 @@ public class Conjunto extends Estructura {
 
     @Override
     public boolean hayElemento(int... posicion) {
-        return this.getElemento(posicion[0]) != this.valorPorDefecto;
+        return this.getElemento(posicion[this.PRIMER_ELEMENTO]) != this.valorPorDefecto;
     }
 
     @Override
     public Object getElemento(int... posicion) {
-        return this.estructura[posicion[0]];
+        return this.estructura[posicion[this.PRIMER_ELEMENTO]];
     }
 
     @Override
     public int getCantidadElementos() {
-        return 0;
+        int cantidad = 0;
+
+        for (int i = 0; i < this.tamano; i++){
+            if (this.getElemento(i) != this.valorPorDefecto)
+                cantidad++;
+        }
+
+        return cantidad;
     }
 }
