@@ -19,14 +19,20 @@ public class Tablero extends Estructura {
         this.filas = filas;
         this.columnas = columnas;
         this.valorPorDefecto = valorPorDefecto;
-        this.cantidadElementos = 0;
         this.inicializar();
         this.impresor = impresor;
     }
 
     @Override
-    public Object[][] getEstructura() {
-        return estructura.clone();
+    public Estructura getEstructura() {
+        Estructura retorno = this;
+        retorno.setEstructura(this.estructura.clone());
+        return retorno;
+    }
+
+    @Override
+    public void setEstructura(Object nuevaEstructura) {
+        this.estructura = (Object[][]) nuevaEstructura;
     }
 
     public int getFilas() {
@@ -69,7 +75,7 @@ public class Tablero extends Estructura {
         for (int i = 0; i < this.filas; i++){
             for (int j = 0; j < this.columnas; j++){
                 if (this.hayElemento(i, j))
-                    if ((fila != i && columna != j) && Math.abs(fila - i) == Math.abs(columna - j))
+                    if (fila != i && columna != j && Math.abs(fila - i) == Math.abs(columna - j))
                         return true;
             }
         }
@@ -85,16 +91,29 @@ public class Tablero extends Estructura {
     }
 
     @Override
+    public int getCantidadElementos() {
+        int cantidad = 0;
+
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++)
+                if (this.hayElemento(i, j))
+                    cantidad += 1;
+        }
+
+        return cantidad;
+    }
+
+    @Override
     public boolean hayElemento(int... posicion) {
-        return (this.estructura[posicion[0]][posicion[1]] != this.valorPorDefecto);
+        if (this.estructura[posicion[0]][posicion[1]] == this.valorPorDefecto)
+            return false;
+        return true;
     }
 
     @Override
     public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[0], posicion[1])) {
+        if (!this.hayElemento(posicion[0], posicion[1]))
             this.estructura[posicion[0]][posicion[1]] = elemento;
-            this.cantidadElementos++;
-        }
         else
             System.out.println("Ya hay un elemento en la posición indicada.");
     }
@@ -103,7 +122,6 @@ public class Tablero extends Estructura {
     public void borrarElemento(int... posicion) {
         if (this.hayElemento(posicion[0], posicion[1])) {
             this.estructura[posicion[0]][posicion[1]] = this.valorPorDefecto;
-            this.cantidadElementos--;
         }
     }
 

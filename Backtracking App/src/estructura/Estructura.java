@@ -7,12 +7,9 @@ public abstract class Estructura {
      *  Representante del contenedor sobre el que se realizará el backtracking.
      **/
 
-    protected int cantidadElementos;
     protected Impresor impresor;
 
-    public int getCantidadElementos(){
-        return this.cantidadElementos;
-    }
+    public abstract int getCantidadElementos();
 
     public Impresor getImpresor() {
         return impresor;
@@ -26,7 +23,9 @@ public abstract class Estructura {
         this.impresor.imprimir(this);
     }
 
-    public abstract Object getEstructura();
+    public abstract Estructura getEstructura();
+
+    public abstract void setEstructura(Object nuevaEstructura);
 
     public abstract void agregarElemento(Object elemento, int ... posicion);
 

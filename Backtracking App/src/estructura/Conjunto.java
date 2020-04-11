@@ -38,8 +38,15 @@ public class Conjunto extends Estructura {
     }
 
     @Override
-    public Object[] getEstructura() {
-        return estructura.clone();
+    public Estructura getEstructura() {
+        Estructura retorno = this;
+        retorno.setEstructura(this.estructura.clone());
+        return retorno;
+    }
+
+    @Override
+    public void setEstructura(Object nuevaEstructura) {
+        this.estructura = (Object[]) nuevaEstructura;
     }
 
     @Override
@@ -70,5 +77,10 @@ public class Conjunto extends Estructura {
     @Override
     public Object getElemento(int... posicion) {
         return this.estructura[posicion[0]];
+    }
+
+    @Override
+    public int getCantidadElementos() {
+        return 0;
     }
 }

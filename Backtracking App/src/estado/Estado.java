@@ -18,7 +18,7 @@ public class Estado {
     }
 
     public Estructura getEstructura() {
-        return estructura;
+        return estructura.getEstructura();
     }
 
     public void setEstructura(Estructura estructura) {
