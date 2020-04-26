@@ -1,7 +1,5 @@
 package estructura;
 
-import impresor.Impresor;
-
 public class Conjunto extends Estructura {
     /**
      *  Estructura predefinida que modela o representa conjuntos de objetos.
@@ -15,12 +13,11 @@ public class Conjunto extends Estructura {
 
     public Conjunto(){}
 
-    public Conjunto(Object valorPorDefecto, int tamano, Impresor impresor){
+    public Conjunto(Object valorPorDefecto, int tamano) {
         this.tamano = tamano;
         this.valorPorDefecto = valorPorDefecto;
         this.estructura = new Object[tamano];
         this.inicializar();
-        this.impresor = impresor;
     }
 
     public Object getValorPorDefecto() {
@@ -37,6 +34,14 @@ public class Conjunto extends Estructura {
 
     public void setTamano(int tamano) {
         this.tamano = tamano;
+    }
+
+    @Override
+    public void imprimirEstructura() {
+        for (int i = 0; i < this.tamano; i++) {
+            System.out.print(this.getElemento(i) + " ");
+        }
+        System.out.println();
     }
 
     @Override
@@ -92,4 +97,5 @@ public class Conjunto extends Estructura {
 
         return cantidad;
     }
+
 }

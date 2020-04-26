@@ -1,7 +1,5 @@
 package estructura;
 
-import impresor.Impresor;
-
 public class Tablero extends Estructura {
     /**
      *  Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez.
@@ -17,13 +15,12 @@ public class Tablero extends Estructura {
 
     public Tablero(){}
 
-    public Tablero(Object valorPorDefecto, int filas, int columnas, Impresor impresor){
+    public Tablero(Object valorPorDefecto, int filas, int columnas) {
         this.estructura = new Object[filas][columnas];
         this.filas = filas;
         this.columnas = columnas;
         this.valorPorDefecto = valorPorDefecto;
         this.inicializar();
-        this.impresor = impresor;
     }
 
     @Override
@@ -62,7 +59,7 @@ public class Tablero extends Estructura {
         this.valorPorDefecto = valorPorDefecto;
     }
 
-    public boolean hayElementoEnRecta(int fila, int columna){
+    public boolean hayElementoEnRecta(int fila, int columna) {
         for (int i = 0; i < this.filas; i++){
             for (int j = 0; j < this.columnas; j++){
                 if (this.hayElemento(i, j))
@@ -74,7 +71,7 @@ public class Tablero extends Estructura {
         return false;
     }
 
-    public boolean hayElementoEnDiagonal(int fila, int columna){
+    public boolean hayElementoEnDiagonal(int fila, int columna) {
         for (int i = 0; i < this.filas; i++){
             for (int j = 0; j < this.columnas; j++){
                 if (this.hayElemento(i, j))
@@ -84,6 +81,18 @@ public class Tablero extends Estructura {
         }
 
         return false;
+    }
+
+    @Override
+    public void imprimirEstructura() {
+        for (int i = 0; i < filas; i++){
+            for (int j = 0; j < columnas; j++){
+                System.out.print(this.getElemento(i, j) + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
     }
 
     @Override
@@ -132,4 +141,5 @@ public class Tablero extends Estructura {
     public Object getElemento(int... posicion) {
         return this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]];
     }
+
 }

@@ -23,7 +23,8 @@ public abstract class Estado {
     }
 
     public List<Accion> getAcciones() {
-        return acciones;
+        List<Accion> copia = this.acciones.subList(0, acciones.size());
+        return copia;
     }
 
     public void setAcciones(List<Accion> acciones) {
@@ -39,8 +40,8 @@ public abstract class Estado {
     }
 
     public void aplicarAcciones() {
-        for (int i = 0; i < this.acciones.size(); i++){
-            acciones.get(i).realizarAccion(estructura);
+        for (Accion accion : this.acciones){
+            accion.realizarAccion(estructura);
         }
     }
 
@@ -48,11 +49,12 @@ public abstract class Estado {
         this.estructura.imprimirEstructura();
     }
 
+    public void backtracking() {
+        //Falta definición
+    }
+
     public abstract boolean cumpleCondicion();
 
     public abstract boolean esSolucion();
 
-    public void backtracking() {
-        //Falta definición
-    }
 }
