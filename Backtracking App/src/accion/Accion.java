@@ -1,14 +1,15 @@
 package accion;
 
-import estructura.Estructura;
+import estado.Estado;
 
+@SuppressWarnings("unused")
 public interface Accion {
      /**
      *  Encargada de realizar una determinada acción sobre la estructura en el momento en que es llamada.
      **/
 
-     void realizarAccion(Estructura e);
+     void realizarAccion(Estado e);
 
-     void deshacerAccion(Estructura e);
+     void deshacerAccion(Estado e);
 
 }

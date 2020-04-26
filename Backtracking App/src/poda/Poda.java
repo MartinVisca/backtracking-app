@@ -2,13 +2,14 @@ package poda;
 
 import estado.Estado;
 
+@SuppressWarnings("unused")
 public interface Poda {
     /**
      *  Clase encargada de la poda de estados no expandibles.
      **/
 
-    public boolean podar(Estado estado);
+    boolean podar(Estado estado);
 
-    public void visitar(Estado estado);
+    void visitar(Estado estado);
 
 }

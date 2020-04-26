@@ -4,13 +4,11 @@ import estructura.Estructura;
 
 import javax.swing.*;
 
+@SuppressWarnings("unused")
 public class Impresor {
     /**
      *  Encargada de realizar lo relacionado a la impresión por pantalla de las diferentes estructuras y estados.
      **/
-
-    private JFrame frame;
-    private JPanel panelPrincipal;
 
     private final static int ANCHO_VENTANA_APLICACION = 250;
     private final static int LARGO_VENTANA_APLICACION = 200;
@@ -20,9 +18,9 @@ public class Impresor {
     }
 
     private void inicializarInterfaz() {
-        this.frame = new JFrame();
-        this.panelPrincipal = new JPanel();
-        panelPrincipal.setBounds(this.ANCHO_VENTANA_APLICACION,this.ANCHO_VENTANA_APLICACION, this.LARGO_VENTANA_APLICACION, this.LARGO_VENTANA_APLICACION);
+        JFrame frame = new JFrame();
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setBounds(ANCHO_VENTANA_APLICACION, ANCHO_VENTANA_APLICACION, LARGO_VENTANA_APLICACION, LARGO_VENTANA_APLICACION);
     }
 
     public void agregarElementoAMostrar() {

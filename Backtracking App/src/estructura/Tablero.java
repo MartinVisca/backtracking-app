@@ -1,5 +1,6 @@
 package estructura;
 
+@SuppressWarnings("unused")
 public class Tablero extends Estructura {
     /**
      *  Estructura predefinida que pretende modelar el tablero de un juego dividido en casillas, simil ajedrez.
@@ -84,18 +85,6 @@ public class Tablero extends Estructura {
     }
 
     @Override
-    public void imprimirEstructura() {
-        for (int i = 0; i < filas; i++){
-            for (int j = 0; j < columnas; j++){
-                System.out.print(this.getElemento(i, j) + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
-    }
-
-    @Override
     protected void inicializar() {
         for (int i = 0; i < this.filas; i++)
             for (int j = 0; j < this.columnas; j++)
@@ -117,29 +106,27 @@ public class Tablero extends Estructura {
 
     @Override
     public boolean hayElemento(int... posicion) {
-        if (this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] == this.valorPorDefecto)
-            return false;
-        return true;
+        return this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] != this.valorPorDefecto;
     }
 
     @Override
     public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[this.PRIMER_ELEMENTO], posicion[this.SEGUNDO_ELEMENTO]))
-            this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] = elemento;
+        if (!this.hayElemento(posicion[PRIMER_ELEMENTO], posicion[SEGUNDO_ELEMENTO]))
+            this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] = elemento;
         else
             System.out.println("Ya hay un elemento en la posición indicada.");
     }
 
     @Override
     public void borrarElemento(int... posicion) {
-        if (this.hayElemento(posicion[this.PRIMER_ELEMENTO], posicion[this.SEGUNDO_ELEMENTO])) {
-            this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]] = this.valorPorDefecto;
+        if (this.hayElemento(posicion[PRIMER_ELEMENTO], posicion[SEGUNDO_ELEMENTO])) {
+            this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] = this.valorPorDefecto;
         }
     }
 
     @Override
     public Object getElemento(int... posicion) {
-        return this.estructura[posicion[this.PRIMER_ELEMENTO]][posicion[this.SEGUNDO_ELEMENTO]];
+        return this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]];
     }
 
 }

@@ -1,13 +1,12 @@
 package estructura;
 
+@SuppressWarnings("unused")
 public abstract class Estructura {
      /**
      *  Representante del contenedor sobre el que se realizará el backtracking.
      **/
 
     public abstract int getCantidadElementos();
-
-    public abstract void imprimirEstructura();
 
     public abstract Estructura getEstructura();
 

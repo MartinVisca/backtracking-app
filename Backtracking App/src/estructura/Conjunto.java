@@ -1,5 +1,6 @@
 package estructura;
 
+@SuppressWarnings("unused")
 public class Conjunto extends Estructura {
     /**
      *  Estructura predefinida que modela o representa conjuntos de objetos.
@@ -37,14 +38,6 @@ public class Conjunto extends Estructura {
     }
 
     @Override
-    public void imprimirEstructura() {
-        for (int i = 0; i < this.tamano; i++) {
-            System.out.print(this.getElemento(i) + " ");
-        }
-        System.out.println();
-    }
-
-    @Override
     public Estructura getEstructura() {
         Estructura retorno = this;
         retorno.setEstructura(this.estructura.clone());
@@ -58,16 +51,16 @@ public class Conjunto extends Estructura {
 
     @Override
     public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[this.PRIMER_ELEMENTO]))
-            this.estructura[posicion[this.PRIMER_ELEMENTO]] = elemento;
+        if (!this.hayElemento(posicion[PRIMER_ELEMENTO]))
+            this.estructura[posicion[PRIMER_ELEMENTO]] = elemento;
         else
             System.out.println("Ya existe un elemento en la posición indicada.");
     }
 
     @Override
     public void borrarElemento(int... posicion) {
-        if (hayElemento(posicion[this.PRIMER_ELEMENTO]))
-            this.estructura[posicion[this.PRIMER_ELEMENTO]] = this.valorPorDefecto;
+        if (hayElemento(posicion[PRIMER_ELEMENTO]))
+            this.estructura[posicion[PRIMER_ELEMENTO]] = this.valorPorDefecto;
     }
 
     @Override
@@ -78,12 +71,12 @@ public class Conjunto extends Estructura {
 
     @Override
     public boolean hayElemento(int... posicion) {
-        return this.getElemento(posicion[this.PRIMER_ELEMENTO]) != this.valorPorDefecto;
+        return this.getElemento(posicion[PRIMER_ELEMENTO]) != this.valorPorDefecto;
     }
 
     @Override
     public Object getElemento(int... posicion) {
-        return this.estructura[posicion[this.PRIMER_ELEMENTO]];
+        return this.estructura[posicion[PRIMER_ELEMENTO]];
     }
 
     @Override
