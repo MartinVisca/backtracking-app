@@ -4,6 +4,9 @@ import estado.Estado;
 import poda.Poda;
 
 public class Backtracking {
+    /**
+     *  Clase que engloba el comportamiento total de la librería.
+     **/
 
     private Poda poda;
 

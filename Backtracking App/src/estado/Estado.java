@@ -9,9 +9,9 @@ import java.util.List;
 
 @SuppressWarnings("all")
 public abstract class Estado {
-     /**
-     *   Esta clase representa la configuración de la estructura sobre la que se está trabajando en un momento dado de la
-     *   ejecución.
+    /**
+     *  Clase que representa al estado en el que se encuentra el objeto sobre el que se realiza el backtracking en un momento dado
+     *  de la ejecución.
      **/
 
     protected Estructura estructura;

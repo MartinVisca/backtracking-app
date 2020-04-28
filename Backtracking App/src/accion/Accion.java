@@ -5,7 +5,7 @@ import estado.Estado;
 @SuppressWarnings("unused")
 public interface Accion {
      /**
-     *  Encargada de realizar una determinada acción sobre la estructura en el momento en que es llamada.
+     *  Encargada de realizar una determinada acción sobre un estado en el momento en que es llamada.
      **/
 
      void realizarAccion(Estado e);
