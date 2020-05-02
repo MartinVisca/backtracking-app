@@ -60,8 +60,6 @@ public abstract class Estado {
         return estadosFactibles;
     }
 
-    public abstract boolean cumpleCondicion();
-
     public abstract boolean esSolucion();
 
     public abstract String toString();
