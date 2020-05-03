@@ -113,8 +113,6 @@ public class Tablero extends Estructura {
     public void agregarElemento(Object elemento, int... posicion) {
         if (!this.hayElemento(posicion[PRIMER_ELEMENTO], posicion[SEGUNDO_ELEMENTO]))
             this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] = elemento;
-        else
-            System.out.println("Ya hay un elemento en la posición indicada.");
     }
 
     @Override
