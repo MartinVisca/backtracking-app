@@ -12,4 +12,6 @@ public interface Accion {
 
      void deshacerAccion(Estado e);
 
+     boolean isAccionAplicada(Estado e);
+
 }
