@@ -47,7 +47,7 @@ public abstract class Estado {
         Set<String> estadosFactibles = new HashSet<>();
 
         if (this.esSolucion()) {
-            estadosFactibles.add(this.solucionToString());
+            estadosFactibles.add(this.toString());
         }
         else {
             for (Accion accion : this.acciones){
@@ -67,7 +67,5 @@ public abstract class Estado {
     public abstract boolean esSolucion();
 
     public abstract String toString();
-
-    public abstract String solucionToString();
 
 }
