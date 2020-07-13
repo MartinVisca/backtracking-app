@@ -12,6 +12,8 @@ public abstract class Estructura {
 
     public abstract void setEstructura(Object nuevaEstructura);
 
+    public abstract Estructura getEstructuraPorCopia();
+
     public abstract void agregarElemento(Object elemento, int ... posicion);
 
     public abstract void borrarElemento(int ... posicion);

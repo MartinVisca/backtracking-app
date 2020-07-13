@@ -91,4 +91,8 @@ public class Conjunto extends Estructura {
         return cantidad;
     }
 
+    @Override
+    public Estructura getEstructuraPorCopia() {
+        return null;
+    }
 }

@@ -36,6 +36,17 @@ public class Tablero extends Estructura {
         this.estructura = (Object[][]) nuevaEstructura;
     }
 
+    @Override
+    public Estructura getEstructuraPorCopia() {
+        Tablero tablero = new Tablero(this.getValorPorDefecto(), this.getFilas(), this.getColumnas());
+
+        for (int i = 0; i < this.filas; i++)
+            for (int j = 0; j < this.columnas; j++)
+                tablero.agregarElemento(this.getElemento(i, j), i, j);
+
+        return tablero;
+    }
+
     public int getFilas() {
         return filas;
     }
