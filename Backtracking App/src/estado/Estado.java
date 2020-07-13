@@ -4,9 +4,8 @@ import accion.Accion;
 import estructura.Estructura;
 import poda.Poda;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 @SuppressWarnings("all")
 public abstract class Estado {
@@ -43,19 +42,18 @@ public abstract class Estado {
         this.acciones.remove(accion);
     }
 
-    public Set<String> backtracking(Poda poda) {
-        Set<String> estadosFactibles = new HashSet<>();
+    public HashMap<String, Estado> backtracking(Poda poda) {
+        HashMap<String, Estado> estadosFactibles = new HashMap<>();
 
         if (this.esSolucion()) {
-            estadosFactibles.add(this.toString());
+            estadosFactibles.put(this.toString(), this.getEstadoPorCopia());
         }
         else {
             for (Accion accion : this.acciones){
                 if (!accion.isAccionAplicada(this)) {
                     accion.realizarAccion(this);
                     if (!poda.podar(this))
-                        //estadosFactibles.add(this.toString());
-                        estadosFactibles.addAll(this.backtracking(poda));
+                        estadosFactibles.put(this.toString(), this.getEstadoPorCopia());
                     accion.deshacerAccion(this);
                 }
             }
@@ -67,5 +65,7 @@ public abstract class Estado {
     public abstract boolean esSolucion();
 
     public abstract String toString();
+
+    public abstract Estado getEstadoPorCopia();
 
 }
