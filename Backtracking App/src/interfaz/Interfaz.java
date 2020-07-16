@@ -1,6 +1,7 @@
 package interfaz;
 
 import estado.Estado;
+import interfaz.actionListeners.EstadosAnterioresActionListener;
 import interfaz.actionListeners.RadioButtonActionListener;
 import interfaz.actionListeners.SiguientesEstadosActionListener;
 import poda.Poda;
@@ -8,8 +9,6 @@ import poda.Poda;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 @SuppressWarnings("all")
@@ -19,24 +18,17 @@ public class Interfaz {
     private JPanel panelPrincipal;
     private JPanel panelPrincipalB;
     private ButtonGroup grupoRadioButton;
-    private HashMap<String, Estado> estadosAnteriores;
     private JFrame frame;
     private Estado estadoSeleccionado;
 
     private final static int WIDTH = 1200;
     private final static int HEIGHT = 1000;
+    private final static int FIRST_ELEMENT = 0;
 
     public Interfaz(Poda poda){
         grupoRadioButton = new ButtonGroup();
         frame = new JFrame("Backtracking App");
-
-        volverAlEstadoAnteriorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
+        volverAlEstadoAnteriorButton.addActionListener(new EstadosAnterioresActionListener(null, this));
         verSiguientesEstadosButton.addActionListener(new SiguientesEstadosActionListener(poda, this));
     }
 
@@ -64,14 +56,6 @@ public class Interfaz {
         this.grupoRadioButton = grupoRadioButton;
     }
 
-    public HashMap<String, Estado> getEstadosAnteriores() {
-        return estadosAnteriores;
-    }
-
-    public void setEstadosAnteriores(HashMap<String, Estado> estadosAnteriores) {
-        this.estadosAnteriores = estadosAnteriores;
-    }
-
     public Estado getEstadoSeleccionado() {
         return estadoSeleccionado;
     }
@@ -81,22 +65,24 @@ public class Interfaz {
     }
 
     public void showInterface(Poda poda, HashMap<String, Estado> content) {
-        frame.setSize(this.WIDTH, this.HEIGHT); //tamaño inicial
-        this.setEstadosAnteriores(content);
+        frame.setSize(this.WIDTH, this.HEIGHT);
         Interfaz interfaz = new Interfaz(poda);
 
         if(content.isEmpty())
-            interfaz.addContentToPanel(null, poda, "Sin estados");
+            interfaz.addContentToPanel(null, "Sin estados");
         else
-            for (String e : content.keySet())
-            interfaz.addContentToPanel(content.get(e), poda, e);
+            for (String e : content.keySet()) {
+                content.get(e).setEstadosHermanos(content);
+                content.get(e).setEstadoPadre(content.get(e));
+                interfaz.addContentToPanel(content.get(e), e);
+            }
 
         frame.setContentPane(interfaz.getPanelPrincipal());
         frame.setVisible(Boolean.TRUE);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void addContentToPanel(Estado estado, Poda poda, String content) {
+    private void addContentToPanel(Estado estado, String content) {
         JPanel panelLabel = new JPanel();
 
         if (!content.equals("Sin estados")) {
@@ -119,16 +105,21 @@ public class Interfaz {
         panelPrincipalB.add(panelLabel, new GridBagConstraints());
     }
 
-    public void showNuevosEstados(Estado estado, Poda poda, HashMap<String, Estado> nuevosEstados) {
+    public void showNuevosEstados(Estado estado, HashMap<String, Estado> nuevosEstados) {
         panelPrincipalB.removeAll();
         panelPrincipalB.revalidate();
         panelPrincipalB.repaint();
 
+        ((EstadosAnterioresActionListener) volverAlEstadoAnteriorButton.getActionListeners()[this.FIRST_ELEMENT]).setEstado(estado);
+
         if (nuevosEstados.isEmpty())
-            this.addContentToPanel(estado, poda, "Sin estados");
+            this.addContentToPanel(estado,"Sin estados");
         else
-            for (Estado e : nuevosEstados.values())
-                this.addContentToPanel(e, poda, e.toString());
+            for (Estado e : nuevosEstados.values()) {
+                e.setEstadosHermanos(nuevosEstados);
+                e.setEstadoPadre(estado);
+                this.addContentToPanel(e, e.toString());
+            }
     }
 
 }

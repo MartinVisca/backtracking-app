@@ -16,6 +16,8 @@ public abstract class Estado {
 
     protected Estructura estructura;
     protected List<Accion> acciones;
+    protected HashMap<String, Estado> estadosHermanos;
+    protected Estado estadoPadre;
 
     public Estructura getEstructura() {
         return estructura.getEstructura();
@@ -23,6 +25,22 @@ public abstract class Estado {
 
     public void setEstructura(Estructura estructura) {
         this.estructura = estructura;
+    }
+
+    public HashMap<String, Estado> getEstadosHermanos() {
+        return estadosHermanos;
+    }
+
+    public void setEstadosHermanos(HashMap<String, Estado> estadosHermanos) {
+        this.estadosHermanos = estadosHermanos;
+    }
+
+    public Estado getEstadoPadre() {
+        return estadoPadre;
+    }
+
+    public void setEstadoPadre(Estado estadoPadre) {
+        this.estadoPadre = estadoPadre;
     }
 
     public List<Accion> getAcciones() {

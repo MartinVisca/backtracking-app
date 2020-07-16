@@ -20,7 +20,7 @@ public class SiguientesEstadosActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Estado estado = interfaz.getEstadoSeleccionado();
-        interfaz.showNuevosEstados(estado, poda, estado.backtracking(poda));
+        interfaz.showNuevosEstados(estado, estado.backtracking(poda));
     }
 
 }
