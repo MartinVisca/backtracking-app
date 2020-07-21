@@ -2,16 +2,16 @@ package accion;
 
 import estado.Estado;
 
-@SuppressWarnings("unused")
-public interface Accion {
-     /**
-     *  Encargada de realizar una determinada acción sobre un estado en el momento en que es llamada.
-     **/
+/**
+ * Encargada de realizar una determinada acción sobre un estado en el momento en que es llamada.
+ */
+@SuppressWarnings("all")
+public interface Accion<T extends Estado> {
 
-     void realizarAccion(Estado e);
+     void realizarAccion(T estado);
 
-     void deshacerAccion(Estado e);
+     void deshacerAccion(T estado);
 
-     boolean isAccionAplicada(Estado e);
+     boolean isAccionAplicada(T estado);
 
 }

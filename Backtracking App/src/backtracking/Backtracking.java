@@ -3,10 +3,10 @@ package backtracking;
 import estado.Estado;
 import poda.Poda;
 
+/**
+ * Clase que engloba el comportamiento total de la librería.
+ */
 public class Backtracking {
-    /**
-     *  Clase que engloba el comportamiento total de la librería.
-     **/
 
     private Poda poda;
 

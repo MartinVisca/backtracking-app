@@ -1,16 +1,14 @@
 package estructura;
 
-@SuppressWarnings("unused")
-public abstract class Estructura {
-     /**
-     *  Representante del contenedor sobre el que se realizará el backtracking.
-     **/
+/**
+ * Representante del contenedor sobre el que se realizará el backtracking.
+ */
+@SuppressWarnings("all")
+public abstract class Estructura<T> {
 
     public abstract int getCantidadElementos();
 
-    public abstract Estructura getEstructura();
-
-    public abstract void setEstructura(Object nuevaEstructura);
+    public abstract void setEstructura(T nuevaEstructura);
 
     public abstract Estructura getEstructuraPorCopia();
 

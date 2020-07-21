@@ -5,14 +5,17 @@ import interfaz.actionListeners.EstadosAnterioresActionListener;
 import interfaz.actionListeners.RadioButtonActionListener;
 import interfaz.actionListeners.SiguientesEstadosActionListener;
 import poda.Poda;
-
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.HashMap;
 
+/**
+ * Clase que implementa la interfaz de la aplicación.
+ */
 @SuppressWarnings("all")
 public class Interfaz {
+
     private JButton verSiguientesEstadosButton;
     private JButton volverAlEstadoAnteriorButton;
     private JPanel panelPrincipal;
@@ -24,6 +27,7 @@ public class Interfaz {
     private final static int WIDTH = 1200;
     private final static int HEIGHT = 1000;
     private final static int FIRST_ELEMENT = 0;
+    private final static int BEVEL_BORDER = 1;
 
     public Interfaz(Poda poda){
         grupoRadioButton = new ButtonGroup();
@@ -96,12 +100,12 @@ public class Interfaz {
             this.grupoRadioButton.add(radioButton);
         }
         else {
-            JLabel labelContentVacio = new JLabel("Sin mas estados que mostrar; la solución no pudo ser encontrada");
-            labelContentVacio.setLayout(new GridBagLayout());
-            panelLabel.add(labelContentVacio);
+            JLabel labelEmptyContent = new JLabel("Sin mas estados que mostrar; la solución no pudo ser encontrada");
+            labelEmptyContent.setLayout(new GridBagLayout());
+            panelLabel.add(labelEmptyContent);
         }
 
-        panelLabel.setBorder(new BevelBorder(1));
+        panelLabel.setBorder(new BevelBorder(this.BEVEL_BORDER));
         panelPrincipalB.add(panelLabel, new GridBagConstraints());
     }
 

@@ -3,28 +3,36 @@ package estado;
 import accion.Accion;
 import estructura.Estructura;
 import poda.Poda;
-
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Clase que representa al estado en el que se encuentra el objeto sobre el que se realiza el backtracking en un momento dado
+ * de la ejecución.
+ */
 @SuppressWarnings("all")
-public abstract class Estado {
-    /**
-     *  Clase que representa al estado en el que se encuentra el objeto sobre el que se realiza el backtracking en un momento dado
-     *  de la ejecución.
-     **/
+public abstract class Estado<T extends Estructura> {
 
-    protected Estructura estructura;
+    protected T estructura;
     protected List<Accion> acciones;
     protected HashMap<String, Estado> estadosHermanos;
     protected Estado estadoPadre;
 
-    public Estructura getEstructura() {
-        return estructura.getEstructura();
+    public T getEstructura() {
+        return this.estructura;
     }
 
-    public void setEstructura(Estructura estructura) {
+    public void setEstructura(T estructura) {
         this.estructura = estructura;
+    }
+
+    public List<Accion> getAcciones() {
+        List<Accion> copia = this.acciones.subList(0, acciones.size());
+        return copia;
+    }
+
+    public void setAcciones(List<Accion> acciones) {
+        this.acciones = acciones;
     }
 
     public HashMap<String, Estado> getEstadosHermanos() {
@@ -41,15 +49,6 @@ public abstract class Estado {
 
     public void setEstadoPadre(Estado estadoPadre) {
         this.estadoPadre = estadoPadre;
-    }
-
-    public List<Accion> getAcciones() {
-        List<Accion> copia = this.acciones.subList(0, acciones.size());
-        return copia;
-    }
-
-    public void setAcciones(List<Accion> acciones) {
-        this.acciones = acciones;
     }
 
     public void addAccion(Accion accion) {
