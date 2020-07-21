@@ -29,7 +29,7 @@ public class SiguientesEstadosActionListener implements ActionListener {
         if (estado != null)
             interfaz.showNuevosEstados(estado, estado.backtracking(poda));
         else
-            JOptionPane.showMessageDialog(null,"No seleccionaste ningún estado");
+            JOptionPane.showMessageDialog(null,"No seleccionaste ningún estado.");
     }
 
 }

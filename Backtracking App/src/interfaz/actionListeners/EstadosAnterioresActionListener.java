@@ -34,7 +34,7 @@ public class EstadosAnterioresActionListener implements ActionListener {
         try {
             interfaz.showNuevosEstados(this.estado.getEstadoPadre(), this.estado.getEstadosHermanos());
         } catch(Exception exception) {
-            JOptionPane.showMessageDialog(null,"Sin estados anteriores");
+            JOptionPane.showMessageDialog(null,"Sin estados anteriores.");
         }
     }
 
