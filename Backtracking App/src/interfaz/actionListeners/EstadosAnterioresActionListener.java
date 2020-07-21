@@ -2,6 +2,8 @@ package interfaz.actionListeners;
 
 import estado.Estado;
 import interfaz.Interfaz;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,7 +31,11 @@ public class EstadosAnterioresActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        interfaz.showNuevosEstados(this.getEstado().getEstadoPadre(), estado.getEstadosHermanos());
+        try {
+            interfaz.showNuevosEstados(this.estado.getEstadoPadre(), this.estado.getEstadosHermanos());
+        } catch(Exception exception) {
+            JOptionPane.showMessageDialog(null,"Sin estados anteriores");
+        }
     }
 
 }

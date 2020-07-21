@@ -1,27 +1,31 @@
 package backtracking;
 
 import estado.Estado;
+import interfaz.Interfaz;
 import poda.Poda;
+
+import java.util.HashMap;
 
 /**
  * Clase que engloba el comportamiento total de la librería.
  */
+@SuppressWarnings("all")
 public class Backtracking {
 
     private Poda poda;
+    private Estado estado;
 
-    public Backtracking(Poda poda) {
+    public Backtracking(Estado estado, Poda poda) {
+        this.estado = estado;
         this.poda = poda;
     }
 
-    public void iniciar(Estado inicial) {
-        //Acá también se inicia la interfaz.
-        inicial.backtracking(this.poda);
-    }
+    public void iniciar() {
+        HashMap<String, Estado> estados = new HashMap<>();
+        estados.put(estado.toString(), estado);
 
-    public void avanzar(Estado siguiente) {
-        //Con la interfaz ya iniciada, va mostrando los estados que resultan de cada ejecución del algoritmo.
-        siguiente.backtracking(this.poda);
+        Interfaz interfaz = new Interfaz(poda);
+        interfaz.showInterface(poda, estados);
     }
 
 }

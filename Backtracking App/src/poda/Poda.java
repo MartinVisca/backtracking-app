@@ -10,6 +10,4 @@ public interface Poda<T extends Estado> {
 
     boolean podar(T estado);
 
-    void visitar(T estado);
-
 }

@@ -3,6 +3,8 @@ package interfaz.actionListeners;
 import estado.Estado;
 import interfaz.Interfaz;
 import poda.Poda;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,7 +25,11 @@ public class SiguientesEstadosActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Estado estado = interfaz.getEstadoSeleccionado();
-        interfaz.showNuevosEstados(estado, estado.backtracking(poda));
+
+        if (estado != null)
+            interfaz.showNuevosEstados(estado, estado.backtracking(poda));
+        else
+            JOptionPane.showMessageDialog(null,"No seleccionaste ningún estado");
     }
 
 }
