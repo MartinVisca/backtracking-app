@@ -12,14 +12,6 @@ public abstract class Estructura<T> {
 
     public abstract Estructura getEstructuraPorCopia();
 
-    public abstract void agregarElemento(Object elemento, int ... posicion);
-
-    public abstract void borrarElemento(int ... posicion);
-
     protected abstract void inicializar();
-
-    public abstract boolean hayElemento(int ... posicion);
-
-    public abstract Object getElemento(int ... posicion);
 
 }

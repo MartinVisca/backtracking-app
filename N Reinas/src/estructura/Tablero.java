@@ -88,6 +88,25 @@ public class Tablero extends Estructura<Object[][]> {
         return false;
     }
 
+    public boolean hayElemento(int fila, int columna) {
+        return this.estructura[fila][columna] != this.valorPorDefecto;
+    }
+
+    public void agregarElemento(Object elemento, int fila, int columna) {
+        if (!this.hayElemento(fila, columna))
+            this.estructura[fila][columna] = elemento;
+    }
+
+    public void borrarElemento(int fila, int columna) {
+        if (this.hayElemento(fila, columna)) {
+            this.estructura[fila][columna] = this.valorPorDefecto;
+        }
+    }
+
+    public Object getElemento(int fila, int columna) {
+        return this.estructura[fila][columna];
+    }
+
     @Override
     protected void inicializar() {
         for (int i = 0; i < this.filas; i++)
@@ -106,29 +125,6 @@ public class Tablero extends Estructura<Object[][]> {
         }
 
         return cantidad;
-    }
-
-    @Override
-    public boolean hayElemento(int... posicion) {
-        return this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] != this.valorPorDefecto;
-    }
-
-    @Override
-    public void agregarElemento(Object elemento, int... posicion) {
-        if (!this.hayElemento(posicion[PRIMER_ELEMENTO], posicion[SEGUNDO_ELEMENTO]))
-            this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] = elemento;
-    }
-
-    @Override
-    public void borrarElemento(int... posicion) {
-        if (this.hayElemento(posicion[PRIMER_ELEMENTO], posicion[SEGUNDO_ELEMENTO])) {
-            this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]] = this.valorPorDefecto;
-        }
-    }
-
-    @Override
-    public Object getElemento(int... posicion) {
-        return this.estructura[posicion[PRIMER_ELEMENTO]][posicion[SEGUNDO_ELEMENTO]];
     }
 
 }
