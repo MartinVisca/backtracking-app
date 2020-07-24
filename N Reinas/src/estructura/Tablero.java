@@ -11,10 +11,7 @@ public class Tablero extends Estructura<Object[][]> {
     private int filas;
     private int columnas;
 
-    private final static int PRIMER_ELEMENTO = 0;
-    private final static int SEGUNDO_ELEMENTO = 1;
-
-    public Tablero(){}
+    public Tablero() {}
 
     public Tablero(Object valorPorDefecto, int filas, int columnas) {
         this.estructura = new Object[filas][columnas];
@@ -22,22 +19,6 @@ public class Tablero extends Estructura<Object[][]> {
         this.columnas = columnas;
         this.valorPorDefecto = valorPorDefecto;
         this.inicializar();
-    }
-
-    @Override
-    public void setEstructura(Object[][] nuevaEstructura) {
-        this.estructura = nuevaEstructura;
-    }
-
-    @Override
-    public Tablero getEstructuraPorCopia() {
-        Tablero tablero = new Tablero(this.getValorPorDefecto(), this.getFilas(), this.getColumnas());
-
-        for (int i = 0; i < this.filas; i++)
-            for (int j = 0; j < this.columnas; j++)
-                tablero.agregarElemento(this.getElemento(i, j), i, j);
-
-        return tablero;
     }
 
     public int getFilas() {
@@ -107,14 +88,6 @@ public class Tablero extends Estructura<Object[][]> {
         return this.estructura[fila][columna];
     }
 
-    @Override
-    protected void inicializar() {
-        for (int i = 0; i < this.filas; i++)
-            for (int j = 0; j < this.columnas; j++)
-                this.estructura[i][j] = this.valorPorDefecto;
-    }
-
-    @Override
     public int getCantidadElementos() {
         int cantidad = 0;
 
@@ -125,6 +98,29 @@ public class Tablero extends Estructura<Object[][]> {
         }
 
         return cantidad;
+    }
+
+    @Override
+    protected void inicializar() {
+        for (int i = 0; i < this.filas; i++)
+            for (int j = 0; j < this.columnas; j++)
+                this.estructura[i][j] = this.valorPorDefecto;
+    }
+
+    @Override
+    public void setEstructura(Object[][] nuevaEstructura) {
+        this.estructura = nuevaEstructura;
+    }
+
+    @Override
+    public Tablero getEstructuraPorCopia() {
+        Tablero tablero = new Tablero(this.getValorPorDefecto(), this.getFilas(), this.getColumnas());
+
+        for (int i = 0; i < this.filas; i++)
+            for (int j = 0; j < this.columnas; j++)
+                tablero.agregarElemento(this.getElemento(i, j), i, j);
+
+        return tablero;
     }
 
 }

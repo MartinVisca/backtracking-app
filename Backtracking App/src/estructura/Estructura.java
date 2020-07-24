@@ -6,8 +6,6 @@ package estructura;
 @SuppressWarnings("all")
 public abstract class Estructura<T> {
 
-    public abstract int getCantidadElementos();
-
     public abstract void setEstructura(T nuevaEstructura);
 
     public abstract Estructura getEstructuraPorCopia();
