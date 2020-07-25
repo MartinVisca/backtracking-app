@@ -34,9 +34,6 @@ public class EstadoNReinas extends Estado<Tablero> {
 
         solucion.append("<html><body>");
 
-        if (this.esSolucion())
-            solucion.append ("------ESTADO SOLUCION------<br>");
-
         for (int i = 0; i < (this.getEstructura()).getFilas(); i++) {
             for (int j = 0; j < (this.getEstructura()).getColumnas(); j++)
                 solucion.append(this.getEstructura().getElemento(i, j)).append("  ");

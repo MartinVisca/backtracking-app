@@ -26,8 +26,14 @@ public class SiguientesEstadosActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Estado estado = interfaz.getEstadoSeleccionado();
 
-        if (estado != null)
+        if (estado != null && !estado.esSolucion()) {
             interfaz.showNuevosEstados(estado, estado.backtracking(poda));
+            interfaz.setEstadoSeleccionado(null);
+        }
+        else if (estado != null && estado.esSolucion()) {
+            JOptionPane.showMessageDialog(null, "El estado seleccionado es una hoja, no tiene estados hijos.");
+            interfaz.setEstadoSeleccionado(null);
+        }
         else
             JOptionPane.showMessageDialog(null,"No seleccionaste ningún estado.");
     }

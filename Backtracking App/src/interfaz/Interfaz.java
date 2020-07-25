@@ -7,6 +7,7 @@ import interfaz.actionListeners.SiguientesEstadosActionListener;
 import poda.Poda;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.HashMap;
 
@@ -34,6 +35,14 @@ public class Interfaz {
         frame = new JFrame("Backtracking App");
         volverAlEstadoAnteriorButton.addActionListener(new EstadosAnterioresActionListener(null, this));
         verSiguientesEstadosButton.addActionListener(new SiguientesEstadosActionListener(poda, this));
+    }
+
+    public JButton getVerSiguientesEstadosButton() {
+        return verSiguientesEstadosButton;
+    }
+
+    public JButton getVolverAlEstadoAnteriorButton() {
+        return volverAlEstadoAnteriorButton;
     }
 
     public JPanel getPanelPrincipal() {
@@ -93,6 +102,10 @@ public class Interfaz {
             JRadioButton radioButton = new JRadioButton(content.toString());
             radioButton.setOpaque(Boolean.TRUE);
             radioButton.setLayout(new GridBagLayout());
+
+            if (estado.esSolucion()) {
+                radioButton.setBackground(ColorUIResource.GREEN);
+            }
 
             radioButton.addActionListener(new RadioButtonActionListener(estado, this));
 
